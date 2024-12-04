@@ -1,0 +1,144 @@
+.top-section{
+    background-image: url('../../assets/images/bg.jpg') !important;
+}
+
+.logo{
+    width: 170px;
+}
+
+.nav-logo{
+    width: 20px;
+}
+
+.nav-menu{
+    list-style-type: none;
+}
+
+.index-div{
+    z-index: 999;
+    position: absolute;
+    margin-top: 42%;
+    width: 90% !important;
+    border: 1px solid white;
+    padding : 15px !important;
+    text-align: left;
+}
+
+.index-div-two{
+    z-index: 999 !important;
+    position: absolute !important;
+    margin-top: 25%;
+    width: 90% !important;
+    padding : 15px !important;
+    text-align: left;
+    color: white;
+}
+
+.slider-primary-text{
+    font-weight: 900 !important;
+    font-size: 24px !important;
+    line-height: 28px !important;
+    color: white;
+}
+
+.slider-secondary-text{
+    font-weight: 900 !important;
+    font-size: 32px !important;
+    line-height: 38px !important;
+    color: white;
+}
+.slider-header{
+    font-weight: 800 !important;
+    font-size: 24px !important;
+    line-height: 28px !important;
+    color: white;
+    display: block;
+}
+.slider-card-title{
+    font-weight: 900 !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    color: white;
+    display: block;
+}
+.slider-card{
+    border: 2px solid white;
+    border-bottom-width: 2px !important;
+    border-bottom-color: white !important;
+    border-top-width: 0px !important;
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+}
+.slider-card-desc{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 16px !important;
+    color: white;
+}
+.slider-footer{
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    line-height:  16px !important;
+    color: white;
+}
+.login-btn-group{
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    line-height: 15px !important;
+    color: rgb(74, 74, 74);
+    padding: 10px 10px;
+    margin: 5px 5px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.login-btn-group-pink{
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    line-height: 15px !important;
+    color: white;
+    padding: 10px 10px;
+    margin: 5px 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(254,82,221);
+    background: linear-gradient(90deg, rgba(254,82,221,1) 35%, rgba(246,23,57,1) 100%);
+}
+.login-btn-group-blue{
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    line-height: 15px !important;
+    color: white;
+    padding: 10px 10px;
+    margin: 5px 5px;
+    border-radius: 25px;
+    cursor: pointer;
+    background: rgb(82,176,254);
+  background: linear-gradient(90deg, rgba(82,176,254,1) 35%, rgba(23,109,246,1) 100%);
+}
+.login-button-group{
+    border-radius: 25px;
+    border: 1px solid black;
+}
+.mobile-input{
+    width: 350px !important;
+    border : 0px !important;
+    outline: 0px !important;
+}
+
+.mobile-input:focus{
+    width: 350px !important;
+    border : 0px !important;
+    outline: 0px !important;
+}
+
+.mobile-option{
+    width: 100% !important;
+    height: 50px !important;
+}
+
+.mobile-title{
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 14px !important;
+    color: rgb(74, 74, 74);
+}

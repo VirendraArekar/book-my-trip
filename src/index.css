@@ -1,13 +1,118 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.navbar-box-text{
+  font-size: 11px !important;
+  line-height: 11px !important;
+  font-weight: 700 !important;
+  color: rgb(255, 255, 255);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar-box-text-gray{
+  font-size: 10px !important;
+  line-height: 10px !important;
+  font-weight: 700 !important;
+  color: rgb(194, 194, 194);
+}
+
+.dropdown-title-text{
+  font-weight: 700 !important;
+  font-size: 11px !important;
+  color: white !important;
+}
+
+.custom-dropdown{
+  padding : 7px 10px !important;
+}
+
+.dropdown-width{
+  width: 300px !important;
+  height: 550px !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden;
+}
+.dropdown-search-icon{
+  position: absolute !important;
+  left : 10px !important;
+  top : 0px !important
+}
+.gradiant-blue{
+  background: rgb(82,176,254);
+  background: linear-gradient(90deg, rgba(82,176,254,1) 35%, rgba(23,109,246,1) 100%);
+}
+.custom-btn{
+  border-radius:  30px !important;
+  height: 50px;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  color: white !important;
+  background-color: #008CFF !important;
+}
+
+.custom-btn-disable{
+  border: 1px solid gray !important;
+  border-radius:  30px !important;
+  height: 50px;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+.line-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.line-container::before,
+.line-container::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid rgb(155, 155, 155);; /* Line color */
+  margin: 0 10px; /* Spacing between line and text */
+}
+
+.line-container span {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(155, 155, 155); /* Text color */
+}
+.login-with{
+  padding : 0px !important;
+  border: 2px solid rgb(155, 155, 155);
+  border-radius: 50%;
+  margin : auto 3px;
+  padding : 5px 9px !important;
+  cursor: pointer;
+}
+
+.with-icon{
+  align-self: center !important;
+  margin-bottom: 3px !important;
+}
+
+.login-footer{
+  position: absolute !important;
+  left: 0px !important;
+  right: 0px !important;
+  bottom: 20px !important;
+  font-size: 14px !important;
+  line-height:  18px !important;
+  font-weight: 400 !important;
+  color: black;
+  text-align: center;
+}
+
+.login-footer-blue{
+
+  color: #008CFF !important;
+}
+
+.with-right{
+  position:  relative !important;
+  height: 540px !important;
+}
+
+.close-btn{
+  top : -20px !important;
+  right : -20px !important;
+  color: white;
+  cursor: pointer;
 }
