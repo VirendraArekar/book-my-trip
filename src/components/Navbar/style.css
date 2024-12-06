@@ -40,3 +40,25 @@
 .slider-img{
     height: 540px !important;
 }
+.middle-nav{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+nav{
+    /* background-color: gray !important; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.middle-nav-ul{
+    margin : 14px 0px !important;
+    /* background-color: black !important; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.btn-trans{
+    background: transparent !important;
+}

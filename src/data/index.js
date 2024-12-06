@@ -1922,3 +1922,70 @@ export const flags = [
         "image": "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/WALES.svg"
     }
 ];
+
+export const categories = [
+    {
+        id : 1,
+        name : 'Flights'
+    },
+    {
+        id : 2,
+        name : 'Hotels'
+    },
+    {
+        id : 3,
+        name : 'Homestays & Villas'
+    },
+    {
+        id : 4,
+        name : 'Holiday Packages'
+    },
+    {
+        id : 5,
+        name : 'Trains'
+    },
+    {
+        id : 6,
+        name : 'Buses'
+    },
+    {
+        id : 7,
+        name : 'Cabs'
+    },
+    {
+        id : 8,
+        name : 'Forex Card & Currency'
+    },
+    {
+        id : 9,
+        name : 'Travel Insurance'
+    },
+]
+
+export const userType = [
+    {
+        id : 1,
+        name: 'Regular',
+        desc: 'Regular Fares'
+    },
+    {
+        id : 2,
+        name: 'Student',
+        desc: 'Extra Discount/baggage'
+    },
+    {
+        id : 3,
+        name: 'Senior Citizen',
+        desc: 'Up to AED 26.02 off'
+    },
+    {
+        id : 4,
+        name: 'Armed Forces',
+        desc: 'Up to AED 26.02 off'
+    },
+    {
+        id : 5,
+        name: 'Doctor & Nurses',
+        desc: 'Up to AED 26.02 off'
+    }
+]

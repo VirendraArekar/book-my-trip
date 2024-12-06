@@ -19,7 +19,8 @@
 }
 
 .custom-dropdown{
-  padding : 7px 10px !important;
+  padding : 7px 20px !important;
+  font-size:medium !important;
 }
 
 .dropdown-width{

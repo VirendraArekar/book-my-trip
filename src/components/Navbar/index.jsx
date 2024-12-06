@@ -21,12 +21,12 @@ export default function index(props) {
   const toggle2 = () => setSetCurrencyOpen((prevState) => !prevState);
   const {loginClick} = props
   return (
-    <nav class="navbar navbar-light justify-content-right px-4 py-0">
+    <nav class="navbar navbar-light justify-content-right align-items-center px-5 py-0">
       <a class="navbar-brand">
         <img src={require("../../assets/images/logo.avif")} className="logo" />
       </a>
-      <div className="text-light w-50">
-        <ul className="row w-100 py-0">
+      <div className="text-light w-50 d-flex justify-content-center align-items-center middle-nav">
+        <ul className="row w-100 py-3 text-light w-50 d-flex justify-content-center align-items-center middle-nav-ul">
           <li className="nav-menu col-4 d-flex d-block  align-items-center justify-content-center">
             <img
               src={require("../../assets/images/key.png")}
@@ -37,7 +37,7 @@ export default function index(props) {
               <div className="navbar-box-text-gray">Growth Your Bussiness!</div>
             </div>
           </li>
-          <li className="nav-menu col-4 d-flex align-items-center justify-content-center">
+          <li className="nav-menu col-4 d-flex align-items-center justify-content-center bg-transparent">
             <img
               src={require("../../assets/images/laptop-bag_11912996.png")}
               className="nav-logo"
@@ -61,22 +61,22 @@ export default function index(props) {
           </li>
         </ul>
       </div>
-      <div className="text-light p-0 m-0">
-        <div className="width-35 d-inline-flex">
+      <div className="text-light p-0 m-0 d-flex justify-content-center align-items-center">
+        <div className="width-35 d-inline-flex d-flex justify-content-center align-items-center">
           {/* <button className="btn btn-block gradiant-blue">
             Login or Create Account
           </button> */}
           <div>
           <Dropdown isOpen={loginOpen} toggle={loginClick} direction={"center"} className="px-1 py-0 " >
-            <DropdownToggle caret className="dropdown-title-text custom-dropdown gradiant-blue">Login or Create Account</DropdownToggle>
+            <DropdownToggle caret className="btn btn-block w-100 dropdown-title-text custom-dropdown gradiant-blue py-3 px-5">Login or Create Account</DropdownToggle>
             <DropdownMenu className="d-none">
 
             </DropdownMenu>
             </Dropdown>
           </div>
           <div className="">
-            <Dropdown isOpen={currencyOpen} toggle={toggle2} direction={"center"} className="px-1 py-0" >
-              <DropdownToggle caret className="dropdown-title-text custom-dropdown">INR|ENG</DropdownToggle>
+            <Dropdown isOpen={currencyOpen} toggle={toggle2} direction={"center"} className="px-1 py-0 btn-trans" >
+              <DropdownToggle caret className="dropdown-title-text custom-dropdown py-3 px-3 ">INR|ENG</DropdownToggle>
               <DropdownMenu className="mt-2">
                 <DropdownItem header>Header</DropdownItem>
                 <DropdownItem>Some Action</DropdownItem>
@@ -91,7 +91,7 @@ export default function index(props) {
           </div>
           <div className="">
             <Dropdown isOpen={languageOpen} toggle={toggle} direction={"center"} className="px-1 py-0 " >
-              <DropdownToggle caret className="dropdown-title-text custom-dropdown">INR</DropdownToggle>
+              <DropdownToggle caret className="dropdown-title-text custom-dropdown py-3 px-3">INR</DropdownToggle>
               <DropdownMenu className="mt-5 dropdown-width">
                 <div className="dropdown-search w-100 d-inline-block">
                    <CiSearch  className="w-20"/>
