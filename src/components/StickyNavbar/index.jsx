@@ -9,6 +9,8 @@ import './style.css'
 import { currencies } from "../../data";
 import { CiSearch } from "react-icons/ci";
 import Modal from '../Modal'
+import { strShorten } from "../../utils/helper";
+import { MdOutlineHolidayVillage } from "react-icons/md";
 
 
 export default function index(props) {
@@ -19,64 +21,116 @@ export default function index(props) {
 
   const toggle = () => setLanguageOpen((prevState) => !prevState);
   const toggle2 = () => setSetCurrencyOpen((prevState) => !prevState);
-  const {loginClick} = props
+  const {loginClick, tabCategories, renderTabLogo} = props
+
+  const renderTabLogoAlt = (name) => {
+    return (
+      <div className="text-center">
+        {name === "Flights" ? (
+          <img
+            src={require("../../assets/images/plane_870092.png")}
+            className="tab-img-alt"
+          />
+        ) : name === "Hotels" ? (
+          <img
+            src={require("../../assets/images/resort_5273266.png")}
+            className="tab-img-alt"
+          />
+        ) : name === "Homestays & Villas" ? (
+          <img
+            src={require("../../assets/images/castle_10236380.png")}
+            className="tab-img-alt"
+          />
+        ) : name === "Holiday Packages" ? (
+          <img
+            src={require("../../assets/images/beach-chair_3707289.png")}
+            className="tab-img-alt"
+          />
+        ) : name === "Trains" ? (
+          <img
+            src={require("../../assets/images/train_3639911.png")}
+            className="tab-img-alt"
+          />
+        ) : name === "Buses" ? (
+          <img
+            src={require("../../assets/images/school-bus_8160193.png")}
+            className="tab-img-alt"
+          />
+        ) : name === "Cabs" ? (
+          <img
+            src={require("../../assets/images/taxi_896980.png")}
+            className="tab-img-alt"
+          />
+        ) : name === "Forex Card & Currency" ? (
+          <img
+            src={require("../../assets/images/8241638.png")}
+            className="tab-img-alt"
+          />
+        ) : (
+          <img
+            src={require("../../assets/images/travel_insurance_icon_150918.png")}
+            className="tab-img-alt"
+          />
+        )}
+      </div>
+    );
+  };
   return (
-    <nav class="navbar navbar-light justify-content-right align-items-center px-2 py-0">
-      <a class="navbar-brand">
-        <img src={require("../../assets/images/logo.avif")} className="logo" />
+    <nav class="navbar navbar-light justify-content-right align-items-center px-2 py-0 fixed-top navbar-color">
+      <a class="navbar-brand mb-0 ">
+        <img src={require("../../assets/images/mmt_dt_header_icon_3x.avif")} className="logo" />
       </a>
-      <div className="text-light w-50 d-flex justify-content-center align-items-center middle-nav">
-        <ul className="row w-100 py-2 text-light w-50 d-flex justify-content-center align-items-center middle-nav-ul">
-          <li className="nav-menu col-4 d-flex d-block  align-items-center justify-content-center">
-            <img
-              src={require("../../assets/images/key.png")}
-              className="nav-logo"
-            />
-            <div className="d-inline-block p-2 py-0">
-              <div className="navbar-box-text pb-1">List Your Property</div>
-              <div className="navbar-box-text-gray">Growth Your Bussiness!</div>
-            </div>
-          </li>
-          <li className="nav-menu col-4 d-flex align-items-center justify-content-center bg-transparent">
-            <img
-              src={require("../../assets/images/laptop-bag_11912996.png")}
-              className="nav-logo"
-            />
-            <div className="d-inline-block p-2 py-0">
-              <div className="navbar-box-text pb-1">Introducing my Biz</div>
-              <div className="navbar-box-text-gray">
-                Business Travel Solution
-              </div>
-            </div>
-          </li>
-          <li className="nav-menu col-4 d-flex align-items-center justify-content-center">
-            <img
-              src={require("../../assets/images/suitcases_1889578.png")}
-              className="nav-logo"
-            />
-            <div className="d-inline-block p-2 py-0">
-              <div className="navbar-box-text pb-1">My Trips</div>
-              <div className="navbar-box-text-gray">Manage Your Booking</div>
-            </div>
-          </li>
-        </ul>
+      <div className="text-light w-50 d-flex ">
+      {tabCategories.map((item, index) => {
+                return (
+                  <div
+                    className="tab-items-alt text-center middle-nav position-relative"
+                    key={index}
+                    onClick={() => setTab(item?.id)}
+                  >
+                    {renderTabLogoAlt(item.name)}
+                    <span
+                      className={`d-block text-center tab-box-text-alt ${
+                        item?.active ? "text-primary" : ""
+                      }`}
+                    >
+                      {strShorten(item.name, 7)}
+                    </span>
+                   
+                  </div>
+                );
+              })}
+        
       </div>
       <div className="text-light p-0 m-0 d-flex justify-content-center align-items-center">
         <div className="width-35 d-inline-flex d-flex justify-content-center align-items-center">
-          {/* <button className="btn btn-block gradiant-blue">
-            Login or Create Account
-          </button> */}
-          <div>
-          <Dropdown isOpen={loginOpen} toggle={loginClick} direction={"center"} className="px-1 py-0 " >
-            <DropdownToggle caret className="btn btn-block w-100 dropdown-title-text custom-dropdown gradiant-blue  px-4">Login or Create Account</DropdownToggle>
-            <DropdownMenu className="d-none">
 
-            </DropdownMenu>
-            </Dropdown>
-          </div>
+        <div className="log-signup-btn">
+       
+       <MdOutlineHolidayVillage size={20} className="mr-2"/>
+       Login Or Create Account
+ </div>
           <div className="">
             <Dropdown isOpen={currencyOpen} toggle={toggle2} direction={"center"} className="px-1 py-0 btn-trans" >
-              <DropdownToggle caret className="dropdown-title-text custom-dropdown  px-4 ">INR|ENG</DropdownToggle>
+              <DropdownToggle caret className="dropdown-title-text-alt  custom-dropdown-alt  px-4 ">Country<br></br><span className="dropdown-title-text-span">India</span></DropdownToggle>
+              <DropdownMenu className="mt-2">
+                <DropdownItem header>Header</DropdownItem>
+                <DropdownItem>Some Action</DropdownItem>
+                <DropdownItem text>Dropdown Item Text</DropdownItem>
+                <DropdownItem disabled>Action (disabled)</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>Foo Action</DropdownItem>
+                <DropdownItem>Bar Action</DropdownItem>
+                <DropdownItem>Quo Action</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
+
+          
+
+          <div className="">
+            <Dropdown isOpen={currencyOpen} toggle={toggle2} direction={"center"} className="px-1 py-0 btn-trans" >
+              <DropdownToggle caret className="dropdown-title-text-alt  custom-dropdown-alt  px-4 ">Language<br></br><span className="dropdown-title-text-span">English</span></DropdownToggle>
               <DropdownMenu className="mt-2">
                 <DropdownItem header>Header</DropdownItem>
                 <DropdownItem>Some Action</DropdownItem>
@@ -91,7 +145,7 @@ export default function index(props) {
           </div>
           <div className="">
             <Dropdown isOpen={languageOpen} toggle={toggle} direction={"center"} className="px-1 py-0 " >
-              <DropdownToggle caret className="dropdown-title-text custom-dropdown  px-4">INR</DropdownToggle>
+              <DropdownToggle caret className="dropdown-title-text-alt custom-dropdown-alt  px-4">Currency<br></br><span className="dropdown-title-text-span">AED</span></DropdownToggle>
               <DropdownMenu className="mt-5 dropdown-width">
                 <div className="dropdown-search w-100 d-inline-block">
                    <CiSearch  className="w-20"/>

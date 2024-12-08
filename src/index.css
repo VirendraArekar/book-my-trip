@@ -17,13 +17,13 @@ body{
 
 .dropdown-title-text{
   font-weight: 700 !important;
-  font-size: 11px !important;
+  font-size: 10px !important;
   color: white !important;
 }
 
 .custom-dropdown{
-  padding : 7px 20px !important;
-  font-size:medium !important;
+  padding : 13px 20px !important;
+  font-size:10px !important;
 }
 
 .dropdown-width{

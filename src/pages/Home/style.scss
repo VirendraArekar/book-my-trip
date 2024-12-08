@@ -1,13 +1,14 @@
 .top-section {
     background-image: url('../../assets/images/bg.jpg') !important;
+    min-height: 100vh + 3;
 }
 
 .logo {
-    width: 190px;
+    width: 150px;
 }
 
 .nav-logo {
-    width: 40px;
+    width: 25px;
 }
 
 .nav-menu {
@@ -159,7 +160,7 @@
     border: 0px !important;
     justify-content: center;
     align-items: center;
-    top: -70px !important;
+    top: -50px !important;
     // border: 1px solid gray !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
     border-radius: 15px;
@@ -167,6 +168,7 @@
 
 .search-section {
     margin: 90px 0px !important;
+    margin-top: 70px !important;
 }
 
 .tab-item {
@@ -174,18 +176,18 @@
 }
 
 .tab-img {
-    width: 50px !important;
-    height: 50px !important;
+    width: 30px !important;
+    height: 30px !important;
     // object-fit: cover !important;
 }
 
 .tab-text {
-    width: 150px !important;
+    width: 100px !important;
 }
 
 .tab-box {
-    width: 130px !important;
-    height: 130px;
+    width: 90px !important;
+    height: 80px;
     justify-self: center;
     align-items: center;
 }
@@ -195,8 +197,8 @@
     justify-content: center !important;
     align-items: center !important;
     align-self: center !important;
-    height: 125px !important;
-    width: 140px !important;
+    height: 100px !important;
+    width: 110px !important;
     padding: 15px !important;
     // border: 4px solid white;
     cursor: pointer;
@@ -209,11 +211,11 @@
 }
 
 .tab-box-text {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 18px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 17px;
     color: rgb(74, 74, 74);
-    margin: 5px;
+    margin: 5px 0px;
 }
 
 .tab-active {
@@ -234,8 +236,8 @@
 }
 
 .radio-label {
-    font-size: 18px !important;
-    font-weight: 700 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
     color: rgb(74, 74, 74) !important;
 
 }
@@ -245,22 +247,22 @@
 }
 
 .to-from-title {
-    font-size: 18px !important;
-    font-weight: 500 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
     line-height: normal;
     color: rgb(74, 74, 74);
 }
 
 .to-from-header {
-    font-size: 36px !important;
-    font-weight: 700 !important;
-    line-height: normal;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    line-height: 36px;
     color: black;
 }
 
 .to-from-info {
-    font-size: 20px !important;
-    font-weight: 500 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
     line-height: normal;
     color: rgb(74, 74, 74);
 }
@@ -282,15 +284,15 @@
 }
 
 .user-title-header {
-    font-size: large;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 900;
     color: black;
 }
 
 .user-title-hightlight {
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 26px;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 16px;
     color: white;
     padding: 1px 3px;
     border-radius: 5px;
@@ -304,25 +306,25 @@
 }
 
 .user-type-title{
-    font-size: 19px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     line-height: 18px;
     color: rgb(74, 74, 74);
     padding-bottom: 5px;
 }
 
 .user-type-title-active{
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
     color: blue;
     padding-bottom: 5px;
 }
 
 .user-type-desc{
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 16px;
+    font-size: 8px;
+    font-weight: 400;
+    line-height: 8px;
     color: rgb(74, 74, 74);
     padding-bottom: 5px;
 }
@@ -334,9 +336,9 @@
 }
 .s-button{
     color: white;
-    font-size: 29px;
-    font-weight: 600;
-    padding: 8px 90px;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 4px 60px;
     border-radius: 50px;
     // width: 20% !important;
 }
@@ -357,6 +359,9 @@
 
 .explore-section{
     border-radius: 25px !important;
+}
+.explore-div{
+    margin-top: -28px !important;
 }
 
 .explore-title{
@@ -406,4 +411,12 @@
   
   .bottom-col{
     background-color: #E7E7E7 !important;
+  }
+
+  .regular-box{
+    background-color: white !important;
+  }
+
+  .add-top-margin{
+    padding-top: 100px !important;
   }

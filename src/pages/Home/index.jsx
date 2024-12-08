@@ -26,12 +26,13 @@ import fimgOne from "../../assets/images/5b28b4a9-d58d-4984-b60b-c0410a572f00.pn
 import fimgTwo from "../../assets/images/022d9c0e-ae81-4ab2-8b8e-948d76eb421d.png";
 import fimgThreee from "../../assets/images/63ef6026-1674-4e06-91f8-77d868e15bcc.png";
 import { UncontrolledCarousel } from "reactstrap";
-import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
-import Desc from './Desc'
-import Footer from '../../components/Footer'
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+import Desc from "./Desc";
+import Footer from "../../components/Footer";
+import StickyNavbar from "../../components/StickyNavbar"
 
-import { FaAngleRight , FaAngleLeft} from "react-icons/fa6";
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 
 export default function Home() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -41,8 +42,15 @@ export default function Home() {
   const [tabCategories, setTabCategories] = useState(categories);
   const [tripType, setTripType] = useState("Round");
   const [offer, setOffer] = useState("Offer");
-  const [flagships, setFlagships] = useState(['Lemon Tree Hotels','WelcomHritage','Wyndham Hotels & Resorts']);
-  const slideImages = Array.from({length: 15}, () => Math.floor(Math.random() * 15));
+  const [flagships, setFlagships] = useState([
+    "Lemon Tree Hotels",
+    "WelcomHritage",
+    "Wyndham Hotels & Resorts",
+  ]);
+  const slideImages = Array.from({ length: 15 }, () =>
+    Math.floor(Math.random() * 15)
+  );
+  const [stickyNav, setStickyNav] = useState(false);
 
   const setTab = (id) => {
     setTabCategories(
@@ -55,8 +63,26 @@ export default function Home() {
     );
   };
 
+  const listenToScroll = () => {
+    let heightToHideFrom = 90;
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
+
+    if (winScroll > heightToHideFrom) {
+        setStickyNav(true);
+    } 
+    else if(winScroll < heightToHideFrom){
+      setStickyNav(false);
+    }
+    else {
+      setStickyNav(false);
+    }
+  };
+
   useState(() => {
     setTab(1);
+    window.addEventListener("scroll", listenToScroll);
+    return () => window.removeEventListener("scroll", listenToScroll);
   }, []);
 
   const changeNumber = (number) => {
@@ -134,12 +160,21 @@ export default function Home() {
     );
   };
 
+  const onlineImageUrl = (index) => {
+    return index === 0 ?
+          'https://images.unsplash.com/photo-1652928945804-9d9731e4da91?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=aaron-robinson-9QDlFQ6qTlM-unsplash.jpg' : (index === 1 ? "https://images.unsplash.com/photo-1534238151781-c62af32c97a0?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=annie-spratt-G96zP4dbsIA-unsplash.jpg" : (index === 2 ? "https://images.unsplash.com/photo-1625408851347-9a0ed832409c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=anthony-persegol-18RbV5vamPM-unsplash.jpg" : (index === 3 ? "https://images.unsplash.com/photo-1724599685287-299a6412b92a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=pascal-bernardon-DM1p2cYN6I8-unsplash.jpg" : (index === 4 ? "https://images.unsplash.com/photo-1648030003736-4382a71bca1d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=fabio-traina--fPpCTLWh74-unsplash.jpg" : (index === 5 ? "https://images.unsplash.com/photo-1583447198378-a0aeae7eec9c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=philippe-collard-roqJ4FFEq2s-unsplash.jpg" : (index === 6 ? "https://images.unsplash.com/photo-1733303988168-83110897f699?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=igor-sporynin-a0j0rZx4D2Q-unsplash.jpg" : (index === 7 ? "https://images.unsplash.com/photo-1733234321541-ed30d2dff66d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=igor-sporynin-V30qGCDzpR4-unsplash.jpg" : (index === 8 ? "https://images.unsplash.com/photo-1732951360178-0b27854fdd24?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=igor-sporynin-nbJgQEWQpik-unsplash.jpg" : (index === 9 ? "https://images.unsplash.com/photo-1733035996834-27c7af9b0f84?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=igor-sporynin-SPiOrWBYd1E-unsplash.jpg" : "https://images.unsplash.com/photo-1733035996834-27c7af9b0f84?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=igor-sporynin-SPiOrWBYd1E-unsplash.jpg")))))))))
+  }
 
   return (
     <div className="m-0 p-0">
       <div className="vh-100 w-100 top-section">
-        <Navbar loginClick={toggle} />
-        <div className="container-fluid mx-0 mt-5 px-5 position-relative search-section">
+        {stickyNav ? (
+          <StickyNavbar loginClick={toggle} tabCategories={tabCategories} renderTabLogo={renderTabLogo}/>
+        ) : (
+          <Navbar loginClick={toggle} />
+        )}
+
+        <div className={`container-fluid mx-0 mt-5 px-4 position-relative search-section ${stickyNav ? "add-top-margin" : ""}`}>
           <div className="d-flex justify-content-center align-items-center position-relative">
             <div className=" mb-4 position-absolute tab-navigation d-flex bg-light justify-content-center align-items-center">
               {tabCategories.map((item, index) => {
@@ -169,7 +204,7 @@ export default function Home() {
             </div>
           </div>
 
-          <form className="bg-light p-4 rounded search-bottom postion-relative">
+          <form className="bg-light p-4 pt-3 rounded search-bottom postion-relative">
             <div className="row radio-tab">
               <div className="col">
                 <div
@@ -240,48 +275,62 @@ export default function Home() {
               </div>
             </div>
             <div className="row mb-3 mt-2 border rounded to-from-section">
-              <div className="col-md-3 p-4 justify-content-center align-items-center to-from-box position-relative">
+              <div className="col-md-3 p-4 py-3 justify-content-center align-items-center to-from-box position-relative">
                 <div className="to-from-title"> From</div>
                 <div className="to-from-header">Delhi</div>
                 <div className="to-from-info">DEL, Delhi Airport India</div>
                 <div className="position-absolute reverse-arrow">
-                  <GoArrowSwitch size={20} className="text-primary"/>
+                  <GoArrowSwitch size={20} className="text-primary" />
                 </div>
               </div>
-              <div className="col-md-3 p-4 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
+              <div className="col-md-3 p-4 py-3 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
                 <div className="to-from-title">To</div>
                 <div className="to-from-header">Bangluru</div>
-                <div className="to-from-info">{strShorten('BLR, Bangluru International  Airport India', 37)}</div>
+                <div className="to-from-info">
+                  {strShorten("BLR, Bangluru International  Airport India", 37)}
+                </div>
               </div>
-              <div className="col-md-2 p-4 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
-              <div className="to-from-title">Departure
-                <FaAngleDown size={20} className="mx-1 text-primary"/>
-              </div>
+              <div className="col-md-2 p-4 py-3 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
+                <div className="to-from-title">
+                  Departure
+                  <FaAngleDown size={20} className="mx-1 text-primary" />
+                </div>
                 <div className="to-from-header">7 Dec'24</div>
                 <div className="to-from-info">Saturday</div>
               </div>
-              <div className="col-md-2 p-4 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
-              <div className="to-from-title">Return <FaAngleDown size={20} className="mx-1 text-primary"/></div>
+              <div className="col-md-2 p-4 py-3 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
+                <div className="to-from-title">
+                  Return <FaAngleDown size={20} className="mx-1 text-primary" />
+                </div>
                 <div className="to-from-header">2 Jan'25</div>
                 <div className="to-from-info">Thursday</div>
               </div>
-              <div className="col-md-2 p-4 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
-                <div className="to-from-title">Travellers & Class <FaAngleDown size={20} className="mx-1 text-primary"/></div>
-                <div className="to-from-header">1 Traveller</div>
-                <div className="to-from-info">{strShorten('Economy/Premium Economy', 15)}</div>
+              <div className="col-md-2 p-4 py-3 justify-content-center align-items-center to-from-box border border-top-0 border-bottom-0 border-end-0">
+                <div className="to-from-title">
+                  Travellers & Class{" "}
+                  <FaAngleDown size={20} className="mx-1 text-primary" />
+                </div>
+                <div className="to-from-header">Traveller</div>
+                <div className="to-from-info">
+                  {strShorten("Economy/Premium Economy", 15)}
+                </div>
               </div>
             </div>
 
-            <div className="row mb-5">
-              <div className="col-2">
+            <div className="row mb-4 mx-0 px-0">
+              <div className="col px-0">
                 <div className="user-title-header">Select a special fare</div>
-                <div className="user-title-hightlight d-inline-block">Extra Saving</div>
+                <div className="user-title-hightlight d-inline-block">
+                  Extra Saving
+                </div>
               </div>
-              {
-                userType.map((item, index) => {
-                  return (
-                    <div className="col-2 p-0 m-0 pe-2">
-                    <div className=" border rounded  d-flex align-items-center p-3" key={index}>
+              {userType.map((item, index) => {
+                return (
+                  <div className="col p-0 m-0 pe-2 px-0">
+                    <div
+                      className=" border rounded d-flex align-items-center p-3 px-2 regular-box"
+                      key={index}
+                    >
                       <input
                         type="radio"
                         name="user-type"
@@ -292,29 +341,32 @@ export default function Home() {
                         <div className="user-type-desc">{item?.desc}</div>
                       </div>
                     </div>
-                    </div>
-                  );
-                })
-              }
-             
+                  </div>
+                );
+              })}
             </div>
 
             <div className="position-absolute search-btn d-flex justify-content-center align-items-center">
-              <Button name={'SEARCH'} className="s-button gradiant-blue" btn=" " onClick={() => {}}/>
+              <Button
+                name={"SEARCH"}
+                className="s-button gradiant-blue"
+                btn=" "
+                onClick={() => {}}
+              />
             </div>
 
-            <div className="position-absolute search-arrow d-flex justify-content-center align-items-center">
+            <div className="position-absolute search-arrow d-flex justify-content-center align-items-center mb-2">
               <div className="w-100 text-center">
-                <MdKeyboardDoubleArrowDown size={25} color="#FFFFFF"/>
+                <MdKeyboardDoubleArrowDown size={25} color="#FFFFFF" />
                 <span className="text-white mx-2 tx-lg">Explore More</span>
-                <MdKeyboardDoubleArrowDown size={25} color="#FFFFFF"/>
+                <MdKeyboardDoubleArrowDown size={25} color="#FFFFFF" />
               </div>
             </div>
           </form>
         </div>
       </div>
-      <div className="d-flex justify-content-center align-items-center">
-        <div className="border explore-section">
+      <div className="d-flex justify-content-center align-items-center explore-div">
+        <div className="border explore-section bg-light">
           {exploreData.map((item, index) => {
             return (
               <div
@@ -551,15 +603,15 @@ export default function Home() {
           <div className="border rounded py-4 px-5">
             <div className="d-flex justify-content-between align-items-center mb-4">
               <div className="d-block-inline slide-title">
-              Handpicked Collections for You
+                Handpicked Collections for You
               </div>
               <div className="d-inline-block">
-              <div className="d-inline-block slide-arrow-box border slide-arrow-left">
-                    <FaAngleLeft size={12} className="slide-arrow "/>
-                 </div>
-                 <div className="d-inline-block slide-arrow-box border slide-arrow-right">
-                    <FaAngleRight size={12} className="slide-arrow "/>
-                 </div>
+                <div className="d-inline-block slide-arrow-box border slide-arrow-left">
+                  <FaAngleLeft size={12} className="slide-arrow " />
+                </div>
+                <div className="d-inline-block slide-arrow-box border slide-arrow-right">
+                  <FaAngleRight size={12} className="slide-arrow " />
+                </div>
               </div>
             </div>
             <Slide slidesToScroll={5} slidesToShow={5} indicators={false}>
@@ -572,21 +624,23 @@ export default function Home() {
                     <div className="first-box w-80 d-flex justify-content-center align-items-center">
                       <div className="first-cap"></div>
                     </div>
-                       
+
                     <div
                       className="slide-box position-relative"
                       style={{
-                        backgroundImage: `url("https://images.unsplash.com/photo-1532664189809-02133fee698d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=fahrul-azmi-BCEexmxL9EQ-unsplash.jpg)`,
+                        backgroundImage: `url(${onlineImageUrl(index)})`,
                       }}
                     >
-                     <div className="position-absolute w-100 slide-bottom-text">
+                      <div className="position-absolute w-100 slide-bottom-text">
                         <div className="text-center slide-header">
                           <span className="px-1 bg-light">TOP 8</span>
                         </div>
                         <div>
-                        <div className="text-light text-center slide-desc px-1">Stays In & Around Delhi for a Weekend Getaway</div>
+                          <div className="text-light text-center slide-desc px-1">
+                            Stays In & Around Delhi for a Weekend Getaway
+                          </div>
                         </div>
-                     </div>
+                      </div>
                     </div>
                   </div>
                 );
@@ -601,15 +655,15 @@ export default function Home() {
           <div className="border rounded py-4 px-5">
             <div className="d-flex justify-content-between align-items-center mb-4">
               <div className="d-block-inline slide-title">
-              Unlock Lesser-Known Wonders of India
+                Unlock Lesser-Known Wonders of India
               </div>
               <div className="d-inline-block">
-              <div className="d-inline-block slide-arrow-box border slide-arrow-left">
-                    <FaAngleLeft size={12} className="slide-arrow "/>
-                 </div>
-                 <div className="d-inline-block slide-arrow-box border slide-arrow-right">
-                    <FaAngleRight size={12} className="slide-arrow "/>
-                 </div>
+                <div className="d-inline-block slide-arrow-box border slide-arrow-left">
+                  <FaAngleLeft size={12} className="slide-arrow " />
+                </div>
+                <div className="d-inline-block slide-arrow-box border slide-arrow-right">
+                  <FaAngleRight size={12} className="slide-arrow " />
+                </div>
               </div>
             </div>
             <Slide slidesToScroll={5} slidesToShow={5} indicators={false}>
@@ -619,14 +673,16 @@ export default function Home() {
                     <div
                       className="slide-box position-relative"
                       style={{
-                        backgroundImage: `url("https://images.unsplash.com/photo-1532664189809-02133fee698d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=fahrul-azmi-BCEexmxL9EQ-unsplash.jpg)`,
+                        backgroundImage: `url(${onlineImageUrl(index)})`,
                       }}
                     >
-                     <div className="position-absolute w-100 slide-bottom-text">
+                      <div className="position-absolute w-100 slide-bottom-text">
                         <div>
-                        <div className="text-light text-left text-start slide-desc px-2">Tamil Nadu's Charming Hill Town</div>
+                          <div className="text-light text-left text-start slide-desc px-2">
+                            Tamil Nadu's Charming Hill Town
+                          </div>
                         </div>
-                     </div>
+                      </div>
                     </div>
                   </div>
                 );
@@ -642,16 +698,49 @@ export default function Home() {
       <div className="px-5 py-5 bottom-col">
         <div className="row">
           <div className="col bottom-desc">
-            <div className="bottom-title">Why MakeMyTrip?</div><br></br>
-            <span className="bottom-desc">Established in 2000, MakeMyTrip has since positioned itself as one of the leading companies, providing great offers, competitive airfares, exclusive discounts, and a seamless online booking experience to many of its customers. The experience of booking your flight tickets, hotel stay, and holiday package through our desktop site or mobile app can be done with complete ease and no hassles at all. We also deliver amazing offers, such as Instant Discounts, Fare Calendar, MyRewardsProgram, MyWallet, and many more while updating them from time to time to better suit our customers’ evolving needs and demands.</span>
+            <div className="bottom-title">Why MakeMyTrip?</div>
+            <br></br>
+            <span className="bottom-desc">
+              Established in 2000, MakeMyTrip has since positioned itself as one
+              of the leading companies, providing great offers, competitive
+              airfares, exclusive discounts, and a seamless online booking
+              experience to many of its customers. The experience of booking
+              your flight tickets, hotel stay, and holiday package through our
+              desktop site or mobile app can be done with complete ease and no
+              hassles at all. We also deliver amazing offers, such as Instant
+              Discounts, Fare Calendar, MyRewardsProgram, MyWallet, and many
+              more while updating them from time to time to better suit our
+              customers’ evolving needs and demands.
+            </span>
           </div>
           <div className="col bottom-desc">
-            <div className="bottom-title">Booking Flights with MakeMyTrip</div><br></br>
-            <span className="bottom-desc">At MakeMyTrip, you can find the best of deals and cheap air tickets to any place you want by booking your tickets on our website or app. Being India’s leading website for hotel, flight, and holiday bookings, MakeMyTrip helps you book flight tickets that are affordable and customized to your convenience. With customer satisfaction being our ultimate goal, we also have a 24/7 dedicated helpline to cater to our customer’s queries and concerns. Serving over 5 million happy customers, we at MakeMyTrip are glad to fulfill the dreams of folks who need a quick and easy means to find air tickets. You can get a hold of the cheapest flight of your choice today while also enjoying the other available options for your travel needs with us.</span>
+            <div className="bottom-title">Booking Flights with MakeMyTrip</div>
+            <br></br>
+            <span className="bottom-desc">
+              At MakeMyTrip, you can find the best of deals and cheap air
+              tickets to any place you want by booking your tickets on our
+              website or app. Being India’s leading website for hotel, flight,
+              and holiday bookings, MakeMyTrip helps you book flight tickets
+              that are affordable and customized to your convenience. With
+              customer satisfaction being our ultimate goal, we also have a 24/7
+              dedicated helpline to cater to our customer’s queries and
+              concerns. Serving over 5 million happy customers, we at MakeMyTrip
+              are glad to fulfill the dreams of folks who need a quick and easy
+              means to find air tickets. You can get a hold of the cheapest
+              flight of your choice today while also enjoying the other
+              available options for your travel needs with us.
+            </span>
           </div>
           <div className="col bottom-desc">
-            <div className="bottom-title">Domestic Flights with MakeMyTrip</div><br></br>
-            <span className="bottom-desc">MakeMyTrip is India's leading player for flight bookings. With the cheapest fare guarantee, experience great value at the lowest price. Instant notifications ensure current flight status, instant fare drops, amazing discounts, instant refunds and rebook options, price comparisons and many more interesting features.</span>
+            <div className="bottom-title">Domestic Flights with MakeMyTrip</div>
+            <br></br>
+            <span className="bottom-desc">
+              MakeMyTrip is India's leading player for flight bookings. With the
+              cheapest fare guarantee, experience great value at the lowest
+              price. Instant notifications ensure current flight status, instant
+              fare drops, amazing discounts, instant refunds and rebook options,
+              price comparisons and many more interesting features.
+            </span>
           </div>
         </div>
       </div>
