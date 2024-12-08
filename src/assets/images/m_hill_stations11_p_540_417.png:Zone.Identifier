@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudconvert.com/
+HostUrl=https://eu-central.storage.cloudconvert.com/tasks/9ff074c9-291b-4196-b629-2c76ceeda35f/m_hill_stations11_p_540_417.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20241208%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20241208T142333Z&X-Amz-Expires=86400&X-Amz-Signature=e0d9d373d4eba2c95e16e03120573f038e3a964d39ca379311d50c75181178a9&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22m_hill_stations11_p_540_417.png%22&response-content-type=image%2Fpng&x-id=GetObject

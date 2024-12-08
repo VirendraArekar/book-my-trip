@@ -1989,3 +1989,63 @@ export const userType = [
         desc: 'Up to AED 26.02 off'
     }
 ]
+
+export const exploreData = [
+    {
+        id : 1,
+        name: 'Where2Go',
+        desc:'',
+        new :false
+    },
+    {
+        id : 2,
+        name: 'How2Go',
+        desc:'Find routes to anywhere',
+        new :true
+    },
+    {
+        id : 3,
+        name: 'MakeMyTrip ICICI Credit Card',
+        desc:'Never-expiring rewards & big benefits',
+        new :false
+    },
+    {
+        id : 4,
+        name: 'MICE',
+        desc:'Offsites, Events & Meetings',
+        new :false
+    },
+    {
+        id : 5,
+        name: 'Gift Cards',
+        desc:'',
+        new :false
+    }
+]
+
+export const offers = [
+    {
+        id : 1,
+        type: 'INTL HOTELS',
+        apply: "T&C'S APPLY",
+        title:'ON DUBAI & ABU DHABI HOTELS',
+        desc:'Grab Up to 30% OFF*',
+        image:"../../assets/images/Desktop-Dubai-Hotel-Sale-171024.avif"
+    },
+    {
+        id : 2,
+        type: 'INTL FLIGHTS',
+        apply: "T&C'S APPLY",
+        title:"ATTENTION! Here's Up to 15%",
+        desc:'on domastic flights for your next trip!',
+        image:"../../assets/images/df-mmtsuper-116x116-01022023.avif"
+    },
+    {
+        id : 3,
+        type: 'DOM FLIGHTS',
+        apply: "T&C'S APPLY",
+        title:'A SUPER_SAVER Deal for You:Up to 15% OFF*',
+        desc:'on domastic flights for your next trip!',
+        image:"../../assets/images/mmtwings-116x116-23032023.avif"
+    }
+]

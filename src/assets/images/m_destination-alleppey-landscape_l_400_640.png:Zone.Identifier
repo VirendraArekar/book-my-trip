@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudconvert.com/
+HostUrl=https://eu-central.storage.cloudconvert.com/tasks/e8a67458-58bb-4dcc-83f4-e7ba4948a846/m_destination-alleppey-landscape_l_400_640.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20241208%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20241208T142334Z&X-Amz-Expires=86400&X-Amz-Signature=c1d9c1e720a0ad29151771862402bb7569046c2ab14cfee0831a17dcc33aac57&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22m_destination-alleppey-landscape_l_400_640.png%22&response-content-type=image%2Fpng&x-id=GetObject

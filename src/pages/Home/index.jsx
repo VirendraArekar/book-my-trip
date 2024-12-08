@@ -8,7 +8,7 @@ import { PiAirplaneTakeoffLight } from "react-icons/pi";
 import { RiHotelLine } from "react-icons/ri";
 import { PiTrain } from "react-icons/pi";
 import IntlTelInput from "intl-tel-input/react";
-import { categories, flags, userType } from "../../data";
+import { categories, exploreData, flags, offers, userType } from "../../data";
 import Button from "../../components/Button";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -16,6 +16,22 @@ import { strShorten } from "../../utils/helper";
 import { FaAngleDown } from "react-icons/fa6";
 import { GoArrowSwitch } from "react-icons/go";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { FaEarthAsia } from "react-icons/fa6";
+import { GrMapLocation } from "react-icons/gr";
+import { TfiWallet } from "react-icons/tfi";
+import { IoPeopleOutline } from "react-icons/io5";
+import { IoGiftOutline } from "react-icons/io5";
+import { MdOutlineArrowRightAlt } from "react-icons/md";
+import fimgOne from "../../assets/images/5b28b4a9-d58d-4984-b60b-c0410a572f00.png";
+import fimgTwo from "../../assets/images/022d9c0e-ae81-4ab2-8b8e-948d76eb421d.png";
+import fimgThreee from "../../assets/images/63ef6026-1674-4e06-91f8-77d868e15bcc.png";
+import { UncontrolledCarousel } from "reactstrap";
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+import Desc from './Desc'
+import Footer from '../../components/Footer'
+
+import { FaAngleRight , FaAngleLeft} from "react-icons/fa6";
 
 export default function Home() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -24,6 +40,10 @@ export default function Home() {
   const [mobileNumber, setMobileNumber] = useState(null);
   const [tabCategories, setTabCategories] = useState(categories);
   const [tripType, setTripType] = useState("Round");
+  const [offer, setOffer] = useState("Offer");
+  const [flagships, setFlagships] = useState(['Lemon Tree Hotels','WelcomHritage','Wyndham Hotels & Resorts']);
+  const slideImages = Array.from({length: 15}, () => Math.floor(Math.random() * 15));
+
   const setTab = (id) => {
     setTabCategories(
       tabCategories.map((category) => {
@@ -95,6 +115,26 @@ export default function Home() {
       </div>
     );
   };
+
+  const renderExploreLogo = (index) => {
+    return (
+      <>
+        {index === 1 ? (
+          <FaEarthAsia size={18} />
+        ) : index === 2 ? (
+          <GrMapLocation size={18} />
+        ) : index === 3 ? (
+          <TfiWallet size={18} />
+        ) : index === 4 ? (
+          <IoPeopleOutline size={18} />
+        ) : (
+          <IoGiftOutline size={18} />
+        )}
+      </>
+    );
+  };
+
+
   return (
     <div className="m-0 p-0">
       <div className="vh-100 w-100 top-section">
@@ -273,6 +313,349 @@ export default function Home() {
           </form>
         </div>
       </div>
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="border explore-section">
+          {exploreData.map((item, index) => {
+            return (
+              <div
+                className={`d-inline-block explore-box py-3 px-4 ${
+                  index != 0
+                    ? "border border-end-0 border-top-0 border-bottom-0"
+                    : ""
+                }`}
+              >
+                <div
+                  className={`d-flex justify-content-center align-items-center`}
+                >
+                  {renderExploreLogo(index + 1)}
+
+                  <div className="d-inline-block">
+                    <div className="ms-3 explore-title d-flex align-items-center">
+                      {item.name}
+                      {item.new && (
+                        <span className="mx-1 expore-hightlight"> new </span>
+                      )}
+                    </div>
+                    <div className="ms-3 explore-desc">{item.desc}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="m-4 mx-5 search-bottom postion-relative">
+        <div className="row border rounded search-bottom-box">
+          <div className="col-6 p-4 pb-1 mb-0">
+            <div className="px-2">
+              <span className="offer-header me-3">Offers</span>
+              <div className="d-inline-block offer-tab-group border border-start-0 border-end-0 border-top-0 text-center">
+                <div
+                  className={`offer-tab d-inline-block ${
+                    offer === "Offer" ? "offer-tab-active" : ""
+                  }`}
+                  onClick={() => setOffer("Offer")}
+                >
+                  All Offers
+                </div>
+                <div
+                  className={`offer-tab d-inline-block ${
+                    offer === "Flight" ? "offer-tab-active" : ""
+                  }`}
+                  onClick={() => setOffer("Flight")}
+                >
+                  Flight
+                </div>
+                <div
+                  className={`offer-tab d-inline-block ${
+                    offer === "Hotel" ? "offer-tab-active" : ""
+                  }`}
+                  onClick={() => setOffer("Hotel")}
+                >
+                  Hotel
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-6 p-4 pb-1 mb-0 text-end jsutify-content-center align-items-center">
+            <div className="px-2 p-4 offer-view">
+              VIEW ALL <MdOutlineArrowRightAlt size={25} className="ms-2" />
+            </div>
+          </div>
+
+          <div className="col-12 mx-3 py-0 my-0 mb-4">
+            <div className="row mx-5 px-5 pt-0 mt-0">
+              {offers.map((item, index) => {
+                return (
+                  <div className="col-6 m-0 p-0 offer-card">
+                    <div className="row border  py-3 px-1 my-2 mx-1 offer-card-box">
+                      <div className="col-4">
+                        {index === 0 ? (
+                          <img
+                            src={require("../../assets/images/Desktop-Dubai-Hotel-Sale-171024.avif")}
+                            className="offer-img"
+                          />
+                        ) : index === 1 ? (
+                          <img
+                            src={require("../../assets/images/mmtwings-116x116-23032023.avif")}
+                            className="offer-img"
+                          />
+                        ) : (
+                          <img
+                            src={require("../../assets/images/df-mmtsuper-116x116-01022023.avif")}
+                            className="offer-img"
+                          />
+                        )}
+                      </div>
+                      <div className="col-8 position-relative ">
+                        <div className="d-flex justify-content-between">
+                          <div className="card-left-text">INTL HOTLES</div>
+                          <div className="card-right-text">T&C'S APPLY</div>
+                        </div>
+                        <div className="offer-card-header my-2">
+                          ON DUBAI & ABU DHABI HOTELS
+                        </div>
+                        <hr></hr>
+                        <div className="offer-card-desc">
+                          Grab Up to 30% OFF*
+                        </div>
+                        <div className="position-absolute book-now">
+                          BOOK NOW
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="m-4 mx-5 search-bottom postion-relative">
+        <div className="row">
+          <div className="d-flex justify-content-center border flagship-section rounded align-items-center py-5">
+            <div className="d-inline-block flagship-header">
+              Flagship Hotel Stores on MakeMyTrip
+            </div>
+            {flagships.map((item, index) => {
+              return (
+                <div
+                  className="d-inline-block border flagship-card mx-1 position-relative"
+                  style={{
+                    backgroundImage: `url(${
+                      index === 0 ? fimgOne : index === 1 ? fimgTwo : fimgThreee
+                    })`,
+                  }}
+                  key={index}
+                >
+                  <div className="flagship-profile-title position-absolute d-inline-block">
+                    {item}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      {/* <div className="m-4 mx-5 search-bottom postion-relative">
+        <div className="row">
+        <UncontrolledCarousel
+          
+          items={[
+            {
+              altText: 'Slide 1',
+              caption: 'Slide 1',
+              key: 1,
+              src: 'https://picsum.photos/id/123/1200/600'
+            },
+            {
+              altText: 'Slide 2',
+              caption: 'Slide 2',
+              key: 2,
+              src: 'https://picsum.photos/id/456/1200/600'
+            },
+            {
+              altText: 'Slide 3',
+              caption: 'Slide 3',
+              key: 3,
+              src: 'https://picsum.photos/id/678/1200/600'
+            }
+          ]}
+        />
+        </div>
+      </div> */}
+
+      <div className="m-4 mx-5 postion-relative">
+        <div className="row">
+          <div className="border rounded px-5 py-4">
+            <div className="row">
+              <div className="col-10">
+                {/* d-flex justify-content-center align-items-center */}
+                <div className="d-flex justify-content-start align-items-center">
+                  <img
+                    src={require("../../assets/images/gift_mobile_phone_icon_179524.png")}
+                    className="mobile-shop-img"
+                  />
+                  <div className="mx-3">
+                    <div className="download-header">Download App Now !</div>
+                    <div className="download-desc">
+                      Use code{" "}
+                      <span className="download-desc-dark">WELCOMEMMT</span> and
+                      get <span className="download-desc-dark">FLAT 12%</span>{" "}
+                      OFF* on your first domestic flight booking
+                    </div>
+                  </div>
+                </div>
+                <div className="w-100">
+                  <div className="d-inline-block border rounded my-3">
+                    <div className="d-inline-block mx-2">
+                      <img
+                        src={require("../../assets/images/Indianflag_6504.png")}
+                        className="indian-flag-img"
+                      />
+                    </div>
+                    <div className="d-inline-block country-code">+91 -</div>
+                    <input type="number" className="mobile-input" />
+                    <button type="button" className="app-link-btn">
+                      GET APP LINK
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="col-2">
+                <div className="text-end my-4">
+                  {/*          
+                 <img src={require('../../assets/images/5a902dbf7f96951c82922875.png')} className="store-img-google d-block text-end"/>
+
+                 <img src={require('../../assets/images/5a902dbf7f96951c82922875.png')} className="store-img-google d-block text-end"/> */}
+
+                  <img
+                    src={require("../../assets/images/5a902db97f96951c82922874.png")}
+                    className="store-img d-block"
+                  />
+
+                  <img
+                    src={require("../../assets/images/5a902db97f96951c82922874.png")}
+                    className="store-img d-block"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="m-4 mx-5 postion-relative">
+        <div className="row">
+          <div className="border rounded py-4 px-5">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <div className="d-block-inline slide-title">
+              Handpicked Collections for You
+              </div>
+              <div className="d-inline-block">
+              <div className="d-inline-block slide-arrow-box border slide-arrow-left">
+                    <FaAngleLeft size={12} className="slide-arrow "/>
+                 </div>
+                 <div className="d-inline-block slide-arrow-box border slide-arrow-right">
+                    <FaAngleRight size={12} className="slide-arrow "/>
+                 </div>
+              </div>
+            </div>
+            <Slide slidesToScroll={5} slidesToShow={5} indicators={false}>
+              {slideImages.map((item, index) => {
+                return (
+                  <div className="slide-parent">
+                    <div className="secong-box w-70 d-flex justify-content-center align-items-center">
+                      <div className="second-cap"></div>
+                    </div>
+                    <div className="first-box w-80 d-flex justify-content-center align-items-center">
+                      <div className="first-cap"></div>
+                    </div>
+                       
+                    <div
+                      className="slide-box position-relative"
+                      style={{
+                        backgroundImage: `url("https://images.unsplash.com/photo-1532664189809-02133fee698d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=fahrul-azmi-BCEexmxL9EQ-unsplash.jpg)`,
+                      }}
+                    >
+                     <div className="position-absolute w-100 slide-bottom-text">
+                        <div className="text-center slide-header">
+                          <span className="px-1 bg-light">TOP 8</span>
+                        </div>
+                        <div>
+                        <div className="text-light text-center slide-desc px-1">Stays In & Around Delhi for a Weekend Getaway</div>
+                        </div>
+                     </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </Slide>
+          </div>
+        </div>
+      </div>
+
+      <div className="m-4 mx-5 postion-relative">
+        <div className="row">
+          <div className="border rounded py-4 px-5">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <div className="d-block-inline slide-title">
+              Unlock Lesser-Known Wonders of India
+              </div>
+              <div className="d-inline-block">
+              <div className="d-inline-block slide-arrow-box border slide-arrow-left">
+                    <FaAngleLeft size={12} className="slide-arrow "/>
+                 </div>
+                 <div className="d-inline-block slide-arrow-box border slide-arrow-right">
+                    <FaAngleRight size={12} className="slide-arrow "/>
+                 </div>
+              </div>
+            </div>
+            <Slide slidesToScroll={5} slidesToShow={5} indicators={false}>
+              {slideImages.map((item, index) => {
+                return (
+                  <div className="slide-parent">
+                    <div
+                      className="slide-box position-relative"
+                      style={{
+                        backgroundImage: `url("https://images.unsplash.com/photo-1532664189809-02133fee698d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=fahrul-azmi-BCEexmxL9EQ-unsplash.jpg)`,
+                      }}
+                    >
+                     <div className="position-absolute w-100 slide-bottom-text">
+                        <div>
+                        <div className="text-light text-left text-start slide-desc px-2">Tamil Nadu's Charming Hill Town</div>
+                        </div>
+                     </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </Slide>
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <Desc />
+      </div>
+      <div className="px-5 py-5 bottom-col">
+        <div className="row">
+          <div className="col bottom-desc">
+            <div className="bottom-title">Why MakeMyTrip?</div><br></br>
+            <span className="bottom-desc">Established in 2000, MakeMyTrip has since positioned itself as one of the leading companies, providing great offers, competitive airfares, exclusive discounts, and a seamless online booking experience to many of its customers. The experience of booking your flight tickets, hotel stay, and holiday package through our desktop site or mobile app can be done with complete ease and no hassles at all. We also deliver amazing offers, such as Instant Discounts, Fare Calendar, MyRewardsProgram, MyWallet, and many more while updating them from time to time to better suit our customers’ evolving needs and demands.</span>
+          </div>
+          <div className="col bottom-desc">
+            <div className="bottom-title">Booking Flights with MakeMyTrip</div><br></br>
+            <span className="bottom-desc">At MakeMyTrip, you can find the best of deals and cheap air tickets to any place you want by booking your tickets on our website or app. Being India’s leading website for hotel, flight, and holiday bookings, MakeMyTrip helps you book flight tickets that are affordable and customized to your convenience. With customer satisfaction being our ultimate goal, we also have a 24/7 dedicated helpline to cater to our customer’s queries and concerns. Serving over 5 million happy customers, we at MakeMyTrip are glad to fulfill the dreams of folks who need a quick and easy means to find air tickets. You can get a hold of the cheapest flight of your choice today while also enjoying the other available options for your travel needs with us.</span>
+          </div>
+          <div className="col bottom-desc">
+            <div className="bottom-title">Domestic Flights with MakeMyTrip</div><br></br>
+            <span className="bottom-desc">MakeMyTrip is India's leading player for flight bookings. With the cheapest fare guarantee, experience great value at the lowest price. Instant notifications ensure current flight status, instant fare drops, amazing discounts, instant refunds and rebook options, price comparisons and many more interesting features.</span>
+          </div>
+        </div>
+      </div>
+      <Footer />
       {/* <div className="d-flex justify-content-center align-items-center position-relative mt-4">
             <div className=" mb-4 position-absolute tab-navigation d-flex bg-light justify-content-center align-items-center">
               {tabCategories.map((item, index) => {
